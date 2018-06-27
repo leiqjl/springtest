@@ -1,10 +1,12 @@
 package com.leiqjl.spittr;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.Date;
 
+@Data
 public class Spittle {
     private final Long id;
     private final String message;
@@ -22,26 +24,6 @@ public class Spittle {
         this.time = time;
         this.longitude = longitude;
         this.latitude = latitude;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
     }
 
     @Override
