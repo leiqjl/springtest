@@ -5,10 +5,13 @@ import com.leiqjl.spittr.data.SpitterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("spitter")
@@ -27,7 +30,10 @@ public class SpitterController {
     }
 
     @PostMapping("register")
-    public String processRegisteration(Spitter spitter) {
+    public String processRegisteration(@Valid Spitter spitter, Errors errors) {
+        if (errors.hasErrors()) {
+            return "registerForm";
+        }
         spitterRepository.save(spitter);
         return "redirect:/spitter/" + spitter.getUsername();
     }
