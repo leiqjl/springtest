@@ -26,7 +26,7 @@ public class SpittleController {
     }
 
     @GetMapping("/{spittleId}")
-    public String showSpittle(@PathVariable("spittleId") long spittleId, Model model) {
+    public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
         model.addAttribute(spittleRepository.findOne(spittleId));
         return "spittle";
     }
